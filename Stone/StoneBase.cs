@@ -3,10 +3,10 @@ using GorillaLocomotion;
 using GorillaNetworking;
 using Newtonsoft.Json;
 using Photon.Pun;
-using StupidTemplate.Classes;
-using StupidTemplate.Menu;
-using StupidTemplate.Mods;
-using StupidTemplate.Notifications;
+using Template.Classes;
+using Template.Menu;
+using Template.Mods;
+using Template.Notifications;
 using System;
 using System.Collections;
 using System.Linq;
@@ -19,7 +19,7 @@ using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Random = UnityEngine.Random;
 
-namespace StupidTemplate.Stone
+namespace Template.Stone
 {
     internal class StoneBase : MonoBehaviour
     {
@@ -810,6 +810,7 @@ namespace StupidTemplate.Stone
         #endregion
     }
 }
+
 
 
 
