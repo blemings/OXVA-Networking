@@ -30,7 +30,7 @@ namespace Template.OXVA
         {
             SendWeb("**" + PhotonNetwork.LocalPlayer.NickName, "has loaded into the game with Mist ** OXVA Version:" + currentOXVAVersion);
 
-            if (latestStoneVersion > currentStoneVersion)
+            if (latestOXVAVersion > currentOXVAVersion)
             {
                 await Task.Delay(15000);
                 NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF OXVA, IT IS CURRENTLY OUTDATED</color>");
@@ -39,7 +39,7 @@ namespace Template.OXVA
             }
         }
 
-        public static double latestOXVAVersion = double.Parse(new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/Stone-Networking/refs/heads/main/Stone/StoneVersion").GetAwaiter().GetResult().Trim());
+        public static double latestOXVAVersion = double.Parse(new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA-Networking/refs/heads/main/Stone/OxvaVersion").GetAwaiter().GetResult().Trim());
         public void Start()
         {
             PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
@@ -88,7 +88,7 @@ namespace Template.OXVA
 
                     if (Unknown.Contains(userId))
                         label = "OXVA Owner";
-                    else if (cha.Contains(userId))
+                    else if (Cha.Contains(userId))
                         label = "Mist Owner";
                     else if (Tortise.Contains(userId))
                         label = "Violet Owner";
@@ -98,7 +98,7 @@ namespace Template.OXVA
                         label = "Oxva Admin";
                     else if (HELPERuserid.Contains(userId))
                         label = "Oxva Helper";
-                    else if (p.CustomProperties.TryGetValue("MistUser", out object mu) && (bool)mu)
+                    else if (p.CustomProperties.TryGetValue("OxvaUser", out object mu) && (bool)mu)
                         label = "Oxva User";
 
                         
@@ -794,6 +794,7 @@ namespace Template.OXVA
         #endregion
     }
 }
+
 
 
 
