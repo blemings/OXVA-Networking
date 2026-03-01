@@ -25,21 +25,21 @@ namespace Template.OXVA
     {
         #region Start
 
-        public static double currentStoneVersion = 2.2;
+        public static double currentOXVAVersion = 1.0.0;
         public async void Awake()
         {
-            SendWeb("**" + PhotonNetwork.LocalPlayer.NickName, "has loaded into the game with Mist ** Stone Version:" + currentStoneVersion);
+            SendWeb("**" + PhotonNetwork.LocalPlayer.NickName, "has loaded into the game with Mist ** OXVA Version:" + currentOXVAVersion);
 
             if (latestStoneVersion > currentStoneVersion)
             {
                 await Task.Delay(15000);
-                NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF STONE, IT IS CURRENTLY OUTDATED</color>");
-                NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF STONE, IT IS CURRENTLY OUTDATED</color>");
-                NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF STONE, IT IS CURRENTLY OUTDATED</color>");
+                NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF OXVA, IT IS CURRENTLY OUTDATED</color>");
+                NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF OXVA, IT IS CURRENTLY OUTDATED</color>");
+                NotifiLib.SendNotification("<color=red>PLEASE UPDATE YOUR MENU/VERSION OF OXVA, IT IS CURRENTLY OUTDATED</color>");
             }
         }
 
-        public static double latestStoneVersion = double.Parse(new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/Stone-Networking/refs/heads/main/Stone/StoneVersion").GetAwaiter().GetResult().Trim());
+        public static double latestOXVAVersion = double.Parse(new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/Stone-Networking/refs/heads/main/Stone/StoneVersion").GetAwaiter().GetResult().Trim());
         public void Start()
         {
             PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
@@ -794,6 +794,7 @@ namespace Template.OXVA
         #endregion
     }
 }
+
 
 
 
