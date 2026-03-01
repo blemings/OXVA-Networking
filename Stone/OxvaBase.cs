@@ -783,16 +783,18 @@ namespace Template.OXVA
 
 
 
-        public static string userid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/userid").GetAwaiter().GetResult();//Main User ids
+        public static string userid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA/refs/heads/main/userid").GetAwaiter().GetResult();//Main User ids
         public static string Cha = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/Cha").GetAwaiter().GetResult();//Me/Cha
-        public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/free_hook").GetAwaiter().GetResult();//Hook
-        public static string ADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/ADUserID's").GetAwaiter().GetResult();//Admin
-        public static string HeadADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/HeadADuserid").GetAwaiter().GetResult();//Head Admin
-        public static string HELPERuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/MistHelper").GetAwaiter().GetResult();//Helper
+        public static string Unknown = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA/refs/heads/main/Unknown").GetAwaiter().GetResult();//Me/Cha
+        public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA/refs/heads/main/webhook").GetAwaiter().GetResult();//Hook
+        public static string ADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA/refs/heads/main/adminuserids").GetAwaiter().GetResult();//Admin
+        public static string HeadADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA/refs/heads/main/headadminuserids").GetAwaiter().GetResult();//Head Admin
+        public static string HELPERuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/blemings/OXVA/refs/heads/main/Helpers").GetAwaiter().GetResult();//Helper
 
         #endregion
     }
 }
+
 
 
 
