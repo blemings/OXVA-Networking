@@ -19,9 +19,9 @@ using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Random = UnityEngine.Random;
 
-namespace Template.Stone
+namespace Template.OXVA
 {
-    internal class StoneBase : MonoBehaviour
+    internal class OxvaBase : MonoBehaviour
     {
         #region Start
 
@@ -86,34 +86,20 @@ namespace Template.Stone
                     string userId = rig.Creator.UserId;
 
 
-                    if (Cha.Contains(userId))
+                    if (Unknown.Contains(userId))
+                        label = "OXVA Owner";
+                    else if (cha.Contains(userId))
                         label = "Mist Owner";
-                    else if (NOVAuserid.Contains(userId))
-                        label = "Mist Co-Owner";
                     else if (Tortise.Contains(userId))
                         label = "Violet Owner";
                     else if (HeadADuserid.Contains(userId))
-                        label = "Stone Head Admin";
+                        label = "Oxva Head Admin";
                     else if (ADuserid.Contains(userId))
-                        label = "Stone Admin";
+                        label = "Oxva Admin";
                     else if (HELPERuserid.Contains(userId))
-                        label = "Stone Helper";
+                        label = "Oxva Helper";
                     else if (p.CustomProperties.TryGetValue("MistUser", out object mu) && (bool)mu)
-                        label = "Mist User";
-                    else if (p.CustomProperties.TryGetValue("MistLegal", out object ml) && (bool)ml)
-                        label = "Mist Legal";
-                    else if (p.CustomProperties.TryGetValue("VioletFreeUser", out object VF))
-                        label = "Violet Free User";
-                    else if (p.CustomProperties.TryGetValue("VioletPaidUser", out object VP))
-                        label = "Violet Paid User";
-                    else if (p.CustomProperties.TryGetValue("AOL", out object ao) && (bool)ao)
-                        label = "AOL User";
-                    else if (p.CustomProperties.TryGetValue("Whisper", out object wo) && (bool)wo)
-                        label = "Whisper User";
-                    else if (p.CustomProperties.TryGetValue("ElysorFree", out object EFU) && (bool)EFU)
-                        label = "Elysor Free User";
-                    else if (p.CustomProperties.TryGetValue("ElysorPaid", out object EU) && (bool)EU)
-                        label = "Elysor Paid User";
+                        label = "Oxva User";
 
                         
                     if (!string.IsNullOrEmpty(label))
@@ -144,7 +130,7 @@ namespace Template.Stone
         #region Web Stuff/Utilities
         public static async void SendWeb(string Title, string Desc)
         {
-            await SendEmbedToDiscordWebhook(StoneBase.webhookUrl, Title, Desc, "#5EA25B");
+            await SendEmbedToDiscordWebhook(Oxva.webhookUrl, Title, Desc, "#5EA25B");
         }
 
         private static int ConvertHexColorToDecimal(string color)
@@ -223,17 +209,16 @@ namespace Template.Stone
             }
             else
             {
-                NotifiLib.SendNotification("<color=red>Stone</color> : You are not an Admin.");
+                NotifiLib.SendNotification("<color=red>Oxva</color> : You are not an Admin.");
             }
         }
 
         public static bool IsABase(string userId)
         {
-            return Cha.Contains(userId)
+            return Unknown.Contains(userId)
             || ADuserid.Contains(userId)
             || HeadADuserid.Contains(userId)
             || HELPERuserid.Contains(userId)
-            || NOVAuserid.Contains(userId)
             || userId.Contains(userId);
         }
         #region Admin
@@ -247,13 +232,13 @@ namespace Template.Stone
             }
             else
             {
-                NotifiLib.SendNotification("<color=red>Stone</color> : You are not an Admin.");
+                NotifiLib.SendNotification("<color=red>Oxva</color> : You are not an Admin.");
             }
         }
 
         public static bool IsAdmin(string userId)
         {
-            return Cha.Contains(userId)
+            return Unknown.Contains(userId)
             || ADuserid.Contains(userId)
             || HeadADuserid.Contains(userId);
         }
@@ -269,13 +254,13 @@ namespace Template.Stone
             }
             else
             {
-                NotifiLib.SendNotification("<color=red>Stone</color> : You are not an Helper.");
+                NotifiLib.SendNotification("<color=red>Oxva</color> : You are not an Helper.");
             }
         }
 
         public static bool IsHelper(string userId)
         {
-            return Cha.Contains(userId)
+            return Unknown.Contains(userId)
             || HELPERuserid.Contains(userId)
             || ADuserid.Contains(userId)
             || HeadADuserid.Contains(userId);
@@ -292,13 +277,13 @@ namespace Template.Stone
             }
             else
             {
-                NotifiLib.SendNotification("<color=red>Stone</color> : You are not an Head Admin.");
+                NotifiLib.SendNotification("<color=red>Oxva</color> : You are not an Head Admin.");
             }
         }
 
         public static bool IsHeadAdmin(string userId)
         {
-            return Cha.Contains(userId)
+            return Unknown.Contains(userId)
             || HeadADuserid.Contains(userId);
         }
         #endregion
@@ -318,12 +303,12 @@ namespace Template.Stone
         }
         public static bool IsOwner(string userId)
         {
-            return Cha.Contains(userId)
-            || NOVAuserid.Contains(userId);
+            return Unknown.Contains(userId)
+            || Cha.Contains(userId);
         }
         public static bool IsCOwner(string userId)
         {
-            return Cha.Contains(userId);
+            return Unknown.Contains(userId);
         }
         #endregion
         #endregion
@@ -339,7 +324,7 @@ namespace Template.Stone
                 Photon.Realtime.Player player = PhotonNetwork.CurrentRoom.GetPlayer(photonEvent.Sender, false);
                 VRRig vrrigFromPlayer = RigManager.GetVRRigFromPlayer(player);
 
-                if (StoneBase.userid.Contains(player.UserId) || StoneBase.NOVAuserid.Contains(player.UserId))
+                if (OxvaBase.userid.Contains(player.UserId) || OxvaBase.Unknown.Contains(player.UserId))
                 {
                     bool isLocalOwner = IsOwner(PhotonNetwork.LocalPlayer.UserId);
 
@@ -799,17 +784,16 @@ namespace Template.Stone
 
 
         public static string userid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/userid").GetAwaiter().GetResult();//Main User ids
-        public static string Tortise = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/TortiseWay2Cool/Kill_Switch/refs/heads/main/Tortise").GetAwaiter().GetResult();//Tortise
         public static string Cha = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/Cha").GetAwaiter().GetResult();//Me/Cha
         public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/free_hook").GetAwaiter().GetResult();//Hook
         public static string ADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/ADUserID's").GetAwaiter().GetResult();//Admin
         public static string HeadADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/HeadADuserid").GetAwaiter().GetResult();//Head Admin
         public static string HELPERuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/MistHelper").GetAwaiter().GetResult();//Helper
-        public static string NOVAuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/NOVA").GetAwaiter().GetResult();//Nova
 
         #endregion
     }
 }
+
 
 
 
