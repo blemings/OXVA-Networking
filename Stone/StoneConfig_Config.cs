@@ -1,19 +1,19 @@
 using gunlibary;
 using Photon.Pun;
 using Photon.Realtime;
-using StupidTemplate.Classes;
-using StupidTemplate.Notifications;
-using StupidTemplate.Stone;
-using StupidTemplate.Stone;
+using Template.Classes;
+using Template.Notifications;
+using Template.Stone;
+using Template.Stone;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using UnityEngine;
-using static StupidTemplate.Stone.StoneBase;
+using static Template.Stone.StoneBase;
 
-namespace StupidTemplate.Stone
+namespace Template.Stone
 {
     internal class StoneConfig_Config
     {
@@ -98,4 +98,5 @@ namespace StupidTemplate.Stone
         }
     }
 }
+
 
